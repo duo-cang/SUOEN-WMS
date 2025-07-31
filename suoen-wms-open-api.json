@@ -1,0 +1,3621 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "WMS Open API",
+    "description": "通过授权接口获取Token,业务接口中Header添加Authentication:Bearer {token} 即可访问接口",
+    "contact": {
+      "name": "Contact",
+      "email": "development@suoen.com"
+    },
+    "version": "V1"
+  },
+  "servers": [
+    {
+      "url": "https://api.suoen.com/"
+    }
+  ],
+  "paths": {
+    "/api/user/finance/BillList": {
+      "get": {
+        "tags": [
+          "财务 Finance"
+        ],
+        "summary": "账单 Bill",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Number",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "CreateTimeAfter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "CreateTimeBefore",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiBillOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiBillOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiBillOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Product/Add": {
+      "post": {
+        "tags": [
+          "产品 Product"
+        ],
+        "summary": "创建 Add",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddProductInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddProductInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddProductInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddProductInput"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddProductInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiAddProductOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiAddProductOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiAddProductOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Product/List": {
+      "get": {
+        "tags": [
+          "产品 Product"
+        ],
+        "summary": "查询 List",
+        "parameters": [
+          {
+            "name": "Sku",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Unit",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ProductUnitEnum3"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiProductOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiProductOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiProductOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Inbound/Add": {
+      "post": {
+        "tags": [
+          "入库 Inbound"
+        ],
+        "summary": "创建 Add",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddInboundInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddInboundInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddInboundInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddInboundInput"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddInboundInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiAddInboundOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiAddInboundOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiAddInboundOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Inbound/Cancel": {
+      "post": {
+        "tags": [
+          "入库 Inbound"
+        ],
+        "summary": "取消 Cancel",
+        "parameters": [
+          {
+            "name": "InboundId",
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfstring"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfstring"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfstring"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Inbound/List": {
+      "get": {
+        "tags": [
+          "入库 Inbound"
+        ],
+        "summary": "查询 List",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "WarehouseCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ReferenceNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "UserId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiInboundOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiInboundOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiInboundOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Outbound/Add": {
+      "post": {
+        "tags": [
+          "出库 Outbound"
+        ],
+        "summary": "创建 Add",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddOutboundInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddOutboundInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddOutboundInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddOutboundInput"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiAddOutboundInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiOutboundAddOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiOutboundAddOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiOutboundAddOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Outbound/Cancel": {
+      "post": {
+        "tags": [
+          "出库 Outbound"
+        ],
+        "summary": "取消 Cancel",
+        "parameters": [
+          {
+            "name": "OutboundId",
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "CancelReason",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfstring"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfstring"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfstring"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Outbound/List": {
+      "get": {
+        "tags": [
+          "出库 Outbound"
+        ],
+        "summary": "查询 List",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "WarehouseCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ReferenceNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "TrackingNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiOutboundOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiOutboundOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiOutboundOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Outbound/Tracking": {
+      "get": {
+        "tags": [
+          "出库 Outbound"
+        ],
+        "summary": "跟踪 Tracking",
+        "parameters": [
+          {
+            "name": "OutboundId",
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "TrackingNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiTrackingOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiTrackingOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiTrackingOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/BatchStock/List": {
+      "get": {
+        "tags": [
+          "库存 Stock"
+        ],
+        "summary": "批次库存 BatchStockList",
+        "parameters": [
+          {
+            "name": "Sku",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StockLocationNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "WarehouseCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/StocksTypeEnum3"
+            }
+          },
+          {
+            "name": "InboundId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiStockPageList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiStockPageList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiStockPageList"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/TotalStock/List": {
+      "get": {
+        "tags": [
+          "库存 Stock"
+        ],
+        "summary": "总库存 TotalStockList",
+        "parameters": [
+          {
+            "name": "Sku",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "WarehouseCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Type",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/StocksTypeEnum3"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiTotalStockPageList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiTotalStockPageList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiTotalStockPageList"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Base/WarehouseList": {
+      "get": {
+        "tags": [
+          "基础 Base"
+        ],
+        "summary": "仓储 Warehouse",
+        "parameters": [
+          {
+            "name": "WarehouseCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/StatusEnum"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiwarehouseUserPageList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiwarehouseUserPageList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApiwarehouseUserPageList"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/wms/Base/ShippingServiceList": {
+      "get": {
+        "tags": [
+          "基础 Base"
+        ],
+        "summary": "物流服务 ShippingService",
+        "parameters": [
+          {
+            "name": "WarehouseCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Code",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApishoppingServicePageList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApishoppingServicePageList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfListOfApishoppingServicePageList"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/authorization/Token": {
+      "post": {
+        "tags": [
+          "授权 Auth"
+        ],
+        "summary": "获取Token GetToken",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiLoginInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiLoginInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiLoginInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiLoginInput"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiLoginInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiUserLoginOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiUserLoginOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiUserLoginOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/user/authorization/RefreshToken": {
+      "post": {
+        "tags": [
+          "授权 Auth"
+        ],
+        "summary": "刷新Token RefreshToken",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiRefreshTokenInput"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiRefreshTokenInput"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiRefreshTokenInput"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiRefreshTokenInput"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiRefreshTokenInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiRefreshTokenOutput"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiRefreshTokenOutput"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminResultOfApiRefreshTokenOutput"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AdminResultOfApiAddInboundOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiAddInboundOutput"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfApiAddProductOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiAddProductOutput"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfApiOutboundAddOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiOutboundAddOutput"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfApiRefreshTokenOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiRefreshTokenOutput"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfApiStockPageList": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiStockPageList"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfApiTotalStockPageList": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiTotalStockPageList"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfApiTrackingOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiTrackingOutput"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfApiUserLoginOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/ApiUserLoginOutput"
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfListOfApiBillOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiBillOutput"
+            },
+            "nullable": true
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfListOfApiInboundOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiInboundOutput"
+            },
+            "nullable": true
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfListOfApiOutboundOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiOutboundOutput"
+            },
+            "nullable": true
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfListOfApiProductOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiProductOutput"
+            },
+            "nullable": true
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfListOfApishoppingServicePageList": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApishoppingServicePageList"
+            },
+            "nullable": true
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfListOfApiwarehouseUserPageList": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiwarehouseUserPageList"
+            },
+            "nullable": true
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "AdminResultOfstring": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "result": {
+            "type": "string",
+            "nullable": true
+          },
+          "extras": { },
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ApiAddInboundInput": {
+        "required": [
+          "warehouseCode",
+          "inboundArrivalType"
+        ],
+        "type": "object",
+        "properties": {
+          "warehouseCode": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "仓库代码",
+            "nullable": true
+          },
+          "returnNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "退货单号",
+            "nullable": true
+          },
+          "inboundArrivalType": {
+            "$ref": "#/components/schemas/InboundArrivalTyepEnum"
+          },
+          "arrivalPlanDate": {
+            "type": "string",
+            "description": "预计到达时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "arrivalShippingType": {
+            "$ref": "#/components/schemas/ArrivalShippingTypeEnum"
+          },
+          "arrivalShippingTracingkNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "到仓运输单号",
+            "nullable": true
+          },
+          "referenceNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "客户自定义单号",
+            "nullable": true
+          },
+          "product": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiAddInboundProductInput"
+            },
+            "description": "入库产品信息",
+            "nullable": true
+          }
+        }
+      },
+      "ApiAddInboundOutput": {
+        "type": "object",
+        "properties": {
+          "inboundId": {
+            "type": "integer",
+            "description": "入库单编号",
+            "format": "int64"
+          }
+        },
+        "nullable": true
+      },
+      "ApiAddInboundProductInput": {
+        "required": [
+          "boxNo",
+          "sku"
+        ],
+        "type": "object",
+        "properties": {
+          "boxNo": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string",
+            "description": "箱号",
+            "nullable": true
+          },
+          "sku": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "SKU",
+            "nullable": true
+          },
+          "quantity": {
+            "maximum": 999,
+            "minimum": 1,
+            "type": "integer",
+            "description": "产品数量",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiAddOutboundAddressInput": {
+        "required": [
+          "name",
+          "countryCode"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人名",
+            "nullable": true
+          },
+          "countryCode": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人国家",
+            "nullable": true
+          },
+          "companyName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人公司",
+            "nullable": true
+          },
+          "addressLine1": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人地址行1",
+            "nullable": true
+          },
+          "addressLine2": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人地址行2",
+            "nullable": true
+          },
+          "postalCode": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人邮编",
+            "nullable": true
+          },
+          "city": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人城市",
+            "nullable": true
+          },
+          "stateProvince": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人州",
+            "nullable": true
+          },
+          "area": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人区",
+            "nullable": true
+          },
+          "houseNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人门牌号",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人电话",
+            "nullable": true
+          },
+          "mobilePhoneNumber": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人手机",
+            "nullable": true
+          },
+          "email": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人邮箱",
+            "nullable": true
+          },
+          "idCardNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人身份证",
+            "nullable": true
+          },
+          "vatNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "收件人税号",
+            "nullable": true
+          },
+          "isResidentialAddress": {
+            "type": "boolean",
+            "description": "是否住宅地址"
+          }
+        },
+        "description": "收件人地址",
+        "nullable": true
+      },
+      "ApiAddOutboundInput": {
+        "required": [
+          "warehouseCode",
+          "shippingServiceCode"
+        ],
+        "type": "object",
+        "properties": {
+          "warehouseCode": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          },
+          "referenceNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "自定义参考号",
+            "nullable": true
+          },
+          "orderNo": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "订单号",
+            "nullable": true
+          },
+          "trackingNo": {
+            "type": "string",
+            "description": "运单号",
+            "nullable": true
+          },
+          "label": {
+            "$ref": "#/components/schemas/ApiTrackingLabel"
+          },
+          "shippingServiceCode": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "物流服务",
+            "nullable": true
+          },
+          "toAddress": {
+            "$ref": "#/components/schemas/ApiAddOutboundAddressInput"
+          },
+          "remark": {
+            "maxLength": 250,
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "product": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiAddOutboundProductInput"
+            },
+            "description": "出库产品",
+            "nullable": true
+          }
+        }
+      },
+      "ApiAddOutboundProductInput": {
+        "required": [
+          "boxNo",
+          "sku"
+        ],
+        "type": "object",
+        "properties": {
+          "boxNo": {
+            "maximum": 99999999,
+            "minimum": 1,
+            "type": "integer",
+            "description": "箱号",
+            "format": "int32"
+          },
+          "sku": {
+            "maxLength": 200,
+            "type": "string",
+            "description": "SKU",
+            "nullable": true
+          },
+          "quantity": {
+            "maximum": 999999999,
+            "minimum": 1,
+            "type": "integer",
+            "description": "产品数量",
+            "format": "int32"
+          }
+        }
+      },
+      "ApiAddProductInput": {
+        "required": [
+          "sku",
+          "unit",
+          "name",
+          "customsChinaName",
+          "customsEnglishName"
+        ],
+        "type": "object",
+        "properties": {
+          "sku": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string",
+            "description": "产品编码",
+            "nullable": true
+          },
+          "unit": {
+            "$ref": "#/components/schemas/ProductUnitEnum"
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string",
+            "description": "品名",
+            "nullable": true
+          },
+          "brand": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "品牌",
+            "nullable": true
+          },
+          "category": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "分类",
+            "nullable": true
+          },
+          "length": {
+            "maximum": 9999999,
+            "minimum": 0.001,
+            "type": "number",
+            "description": "长度",
+            "format": "double"
+          },
+          "width": {
+            "maximum": 9999999,
+            "minimum": 0.001,
+            "type": "number",
+            "description": "宽度",
+            "format": "double"
+          },
+          "height": {
+            "maximum": 9999999,
+            "minimum": 0.001,
+            "type": "number",
+            "description": "高度",
+            "format": "double"
+          },
+          "weight": {
+            "maximum": 9999999,
+            "minimum": 0.001,
+            "type": "number",
+            "description": "重量",
+            "format": "double"
+          },
+          "customsChinaName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "申报中文名",
+            "nullable": true
+          },
+          "customsEnglishName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "申报英文名",
+            "nullable": true
+          },
+          "customsValue": {
+            "type": "number",
+            "description": "申报价值",
+            "format": "double"
+          },
+          "customsWeight": {
+            "type": "number",
+            "description": "申报重量",
+            "format": "double"
+          },
+          "customsOrigin": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "原产地",
+            "nullable": true
+          },
+          "customsHsCode": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "海关编码",
+            "nullable": true
+          },
+          "customsMaterial": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "材质",
+            "nullable": true
+          },
+          "customsSusage": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "用途",
+            "nullable": true
+          },
+          "sellPrice": {
+            "type": "number",
+            "description": "销售价",
+            "format": "double"
+          },
+          "costPrice": {
+            "type": "number",
+            "description": "成本价",
+            "format": "double"
+          },
+          "pickingName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "拣货信息",
+            "nullable": true
+          },
+          "isBattery": {
+            "type": "boolean",
+            "description": "带电池"
+          },
+          "isTort": {
+            "type": "boolean",
+            "description": "是否侵权"
+          },
+          "isMagnet": {
+            "type": "boolean",
+            "description": "是否带磁"
+          },
+          "isLiquid": {
+            "type": "boolean",
+            "description": "是否液体"
+          },
+          "isPowder": {
+            "type": "boolean",
+            "description": "是否粉末"
+          },
+          "isPaste": {
+            "type": "boolean",
+            "description": "是否膏状"
+          },
+          "isInboundSerialNumber": {
+            "type": "boolean",
+            "description": "入库序列号管控"
+          },
+          "isOutboundSerialNumber": {
+            "type": "boolean",
+            "description": "出库序列号管控"
+          }
+        }
+      },
+      "ApiAddProductOutput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "品名",
+            "nullable": true
+          },
+          "sku": {
+            "type": "string",
+            "description": "产品编码",
+            "nullable": true
+          }
+        },
+        "nullable": true
+      },
+      "ApiBillOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "账单编号",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "description": "费用名称",
+            "nullable": true
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "description": "金额",
+            "format": "double"
+          },
+          "businessType": {
+            "$ref": "#/components/schemas/BillItemBusinessTypeEnum"
+          },
+          "number": {
+            "type": "integer",
+            "description": "业务单号",
+            "format": "int64",
+            "nullable": true
+          },
+          "referenceNo": {
+            "type": "string",
+            "description": "业务参考号",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/BillItemTypeEnum"
+          },
+          "status": {
+            "$ref": "#/components/schemas/BillItemStatusEnum"
+          },
+          "createType": {
+            "$ref": "#/components/schemas/BillItemCreateTypeEnum"
+          },
+          "explain": {
+            "type": "string",
+            "description": "说明",
+            "nullable": true
+          },
+          "billedTime": {
+            "type": "string",
+            "description": "支付完成时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "period": {
+            "type": "string",
+            "description": "所属账期",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64",
+            "nullable": true
+          },
+          "userNickName": {
+            "type": "string",
+            "description": "客户别名",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "ApiInboundOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "入库单号",
+            "format": "int64",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64"
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          },
+          "inboundArrivalType": {
+            "$ref": "#/components/schemas/InboundArrivalTyepEnum"
+          },
+          "arrivalPlanDate": {
+            "type": "string",
+            "description": "预计到达时间",
+            "format": "date-time"
+          },
+          "arrivalShippingType": {
+            "$ref": "#/components/schemas/ArrivalShippingTypeEnum"
+          },
+          "arrivalShippingTracingkNo": {
+            "type": "string",
+            "description": "到仓运输单号",
+            "nullable": true
+          },
+          "referenceNo": {
+            "type": "string",
+            "description": "参考号",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/InboundStatusEnum"
+          },
+          "isAddServcie": {
+            "type": "boolean",
+            "description": "是否有增值服务"
+          },
+          "totalBoxQuantity": {
+            "type": "integer",
+            "description": "箱总数量",
+            "format": "int32"
+          },
+          "arrivalBoxTotalQuantity": {
+            "type": "integer",
+            "description": "到达箱总数量",
+            "format": "int32"
+          },
+          "arrivalPalletTotalQuantity": {
+            "type": "integer",
+            "description": "到达托盘总数量",
+            "format": "int32"
+          },
+          "totalSkuQuantity": {
+            "type": "integer",
+            "description": "SKU种类",
+            "format": "int32"
+          },
+          "totalProductQuantity": {
+            "type": "integer",
+            "description": "产品总数量",
+            "format": "int32"
+          },
+          "totalPutAwayProductQuantity": {
+            "type": "integer",
+            "description": "产品上架总数量",
+            "format": "int32"
+          },
+          "isAbnormal": {
+            "type": "boolean",
+            "description": "是否有异常标记"
+          },
+          "abnormalMessage": {
+            "type": "string",
+            "description": "异常内容",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "inTransitTime": {
+            "type": "string",
+            "description": "提交在途时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "receivedTime": {
+            "type": "string",
+            "description": "到达时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "checkedTime": {
+            "type": "string",
+            "description": "质检时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "shelvedTime": {
+            "type": "string",
+            "description": "上架完成时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "completedTime": {
+            "type": "string",
+            "description": "完成时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "receiveList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiInboundReceiveOutput"
+            },
+            "description": "入库收货信息",
+            "nullable": true
+          },
+          "productList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiInboundProductOutput"
+            },
+            "description": "入库产品信息",
+            "nullable": true
+          },
+          "putawayList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiInboundPutawayOutput"
+            },
+            "description": "入库上架信息",
+            "nullable": true
+          }
+        }
+      },
+      "ApiInboundProductOutput": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "description": "SKU",
+            "nullable": true
+          },
+          "putawayQuantity": {
+            "type": "integer",
+            "description": "产品上架数量",
+            "format": "int32"
+          },
+          "qualifiedQuantity": {
+            "type": "integer",
+            "description": "正常上架数量",
+            "format": "int32"
+          },
+          "imperfectionsQuantity": {
+            "type": "integer",
+            "description": "残次品上架数量",
+            "format": "int32"
+          },
+          "measureLength": {
+            "type": "number",
+            "description": "仓库实际测量长度",
+            "format": "double"
+          },
+          "measureWidth": {
+            "type": "number",
+            "description": "仓库实际测量宽度",
+            "format": "double"
+          },
+          "measureHeight": {
+            "type": "number",
+            "description": "仓库实际测量高度",
+            "format": "double"
+          },
+          "measureWeight": {
+            "type": "number",
+            "description": "仓库实际测量重量",
+            "format": "double"
+          }
+        }
+      },
+      "ApiInboundPutawayOutput": {
+        "type": "object",
+        "properties": {
+          "inboundId": {
+            "type": "integer",
+            "description": "入库单号",
+            "format": "int64"
+          },
+          "productId": {
+            "type": "integer",
+            "description": "产品Id",
+            "format": "int64"
+          },
+          "sku": {
+            "type": "string",
+            "description": "SKU",
+            "nullable": true
+          },
+          "putawayQuantity": {
+            "type": "integer",
+            "description": "产品上架数量",
+            "format": "int32"
+          },
+          "qualifiedQuantity": {
+            "type": "integer",
+            "description": "正常上架数量",
+            "format": "int32"
+          },
+          "imperfectionsQuantity": {
+            "type": "integer",
+            "description": "残次品上架数量",
+            "format": "int32"
+          },
+          "stocksType": {
+            "$ref": "#/components/schemas/StocksTypeEnum"
+          },
+          "boxNo": {
+            "type": "string",
+            "description": "箱号",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "ApiInboundReceiveOutput": {
+        "type": "object",
+        "properties": {
+          "inboundId": {
+            "type": "integer",
+            "description": "入库单号",
+            "format": "int64"
+          },
+          "referenceNo": {
+            "type": "string",
+            "description": "自定义参考号",
+            "nullable": true
+          },
+          "number": {
+            "type": "string",
+            "description": "编号",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "数量",
+            "format": "int32"
+          },
+          "type": {
+            "$ref": "#/components/schemas/InboundReceiveTypeEnum"
+          },
+          "weightUnit": {
+            "$ref": "#/components/schemas/WeightUnitEnum"
+          },
+          "dimensionsUnit": {
+            "$ref": "#/components/schemas/DimensionsUnitEnum"
+          },
+          "weight": {
+            "type": "number",
+            "description": "预约重量",
+            "format": "double"
+          },
+          "length": {
+            "type": "number",
+            "description": "预约长度",
+            "format": "double"
+          },
+          "width": {
+            "type": "number",
+            "description": "预约宽度",
+            "format": "double"
+          },
+          "height": {
+            "type": "number",
+            "description": "预约高度",
+            "format": "double"
+          },
+          "explain": {
+            "type": "string",
+            "description": "说明",
+            "nullable": true
+          },
+          "trackingNo": {
+            "type": "string",
+            "description": "运单号",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time"
+          }
+        }
+      },
+      "ApiLoginInput": {
+        "required": [
+          "appId",
+          "appSecret"
+        ],
+        "type": "object",
+        "properties": {
+          "appId": {
+            "type": "integer",
+            "description": "AppId",
+            "format": "int64"
+          },
+          "appSecret": {
+            "type": "string",
+            "description": "AppSecret",
+            "nullable": true
+          }
+        }
+      },
+      "ApiOutboundAddOutput": {
+        "type": "object",
+        "properties": {
+          "outboundId": {
+            "type": "integer",
+            "description": "出库单编号",
+            "format": "int64"
+          },
+          "trackingNo": {
+            "type": "string",
+            "description": "运单号",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "description": "运单文件",
+            "nullable": true
+          }
+        },
+        "nullable": true
+      },
+      "ApiOutboundOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "出库单号",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64"
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          },
+          "originalNo": {
+            "type": "string",
+            "description": "原单号",
+            "nullable": true
+          },
+          "referenceNo": {
+            "type": "string",
+            "description": "自定义参考号",
+            "nullable": true
+          },
+          "trackingNo": {
+            "type": "string",
+            "description": "运单号",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "description": "物流面单",
+            "nullable": true
+          },
+          "transferNo": {
+            "type": "string",
+            "description": "转单号",
+            "nullable": true
+          },
+          "providerNo": {
+            "type": "string",
+            "description": "物流服务商单号",
+            "nullable": true
+          },
+          "shippingServiceCode": {
+            "type": "string",
+            "description": "物流服务",
+            "nullable": true
+          },
+          "stopStatus": {
+            "$ref": "#/components/schemas/StopStatusEnum"
+          },
+          "orderNo": {
+            "type": "string",
+            "description": "订单号",
+            "nullable": true
+          },
+          "fromName": {
+            "type": "string",
+            "description": "发件人名",
+            "nullable": true
+          },
+          "fromCountryCode": {
+            "type": "string",
+            "description": "发件人国家",
+            "nullable": true
+          },
+          "fromCompanyName": {
+            "type": "string",
+            "description": "发件人公司",
+            "nullable": true
+          },
+          "fromAddressLine1": {
+            "type": "string",
+            "description": "发件人地址行1",
+            "nullable": true
+          },
+          "fromAddressLine2": {
+            "type": "string",
+            "description": "发件人地址行2",
+            "nullable": true
+          },
+          "fromPostalCode": {
+            "type": "string",
+            "description": "发件人邮编",
+            "nullable": true
+          },
+          "fromCity": {
+            "type": "string",
+            "description": "发件人城市",
+            "nullable": true
+          },
+          "fromStateProvince": {
+            "type": "string",
+            "description": "发件人州",
+            "nullable": true
+          },
+          "fromArea": {
+            "type": "string",
+            "description": "发件人区",
+            "nullable": true
+          },
+          "fromHouseNo": {
+            "type": "string",
+            "description": "发件人门牌号",
+            "nullable": true
+          },
+          "fromPhoneNumber": {
+            "type": "string",
+            "description": "发件人电话号码",
+            "nullable": true
+          },
+          "fromMobilePhoneNumber": {
+            "type": "string",
+            "description": "发件人手机号码",
+            "nullable": true
+          },
+          "fromEmail": {
+            "type": "string",
+            "description": "发件人邮箱",
+            "nullable": true
+          },
+          "fromVatNo": {
+            "type": "string",
+            "description": "发件人税号",
+            "nullable": true
+          },
+          "toCountryCode": {
+            "type": "string",
+            "description": "收件人国家",
+            "nullable": true
+          },
+          "toCity": {
+            "type": "string",
+            "description": "收件人城市",
+            "nullable": true
+          },
+          "toStateProvince": {
+            "type": "string",
+            "description": "收件人州",
+            "nullable": true
+          },
+          "toArea": {
+            "type": "string",
+            "description": "收件人区",
+            "nullable": true
+          },
+          "toIsResidentialAddress": {
+            "type": "boolean",
+            "description": "是否住宅地址"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注",
+            "nullable": true
+          },
+          "packagesQuantity": {
+            "type": "integer",
+            "description": "包裹数量",
+            "format": "int32"
+          },
+          "totalProductQuantity": {
+            "type": "integer",
+            "description": "产品数量",
+            "format": "int32"
+          },
+          "totalSkuQuantity": {
+            "type": "integer",
+            "description": "产品种类",
+            "format": "int32"
+          },
+          "totalWeight": {
+            "type": "number",
+            "description": "重量",
+            "format": "double",
+            "nullable": true
+          },
+          "totalFee": {
+            "type": "number",
+            "description": "订单总费用",
+            "format": "double",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/OutboundStatusEnum"
+          },
+          "financialStatus": {
+            "$ref": "#/components/schemas/OutboundFinancialStatusEnum"
+          },
+          "isAddServcie": {
+            "type": "boolean",
+            "description": "是否有增值服务"
+          },
+          "estimateShippingFee": {
+            "type": "number",
+            "description": "估算运费",
+            "format": "double"
+          },
+          "pickType": {
+            "$ref": "#/components/schemas/OutboundPickTypeEnum"
+          },
+          "isAbnormal": {
+            "type": "boolean",
+            "description": "是否有异常标记"
+          },
+          "abnormalMessage": {
+            "type": "string",
+            "description": "异常内容",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "completeTime": {
+            "type": "string",
+            "description": "完成时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "submitTime": {
+            "type": "string",
+            "description": "提交申请时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "confirmTime": {
+            "type": "string",
+            "description": "确认申请时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "pickingTime": {
+            "type": "string",
+            "description": "拣货开始时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "pickedTime": {
+            "type": "string",
+            "description": "拣货完成时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "packedTime": {
+            "type": "string",
+            "description": "打包完成时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "cancelTime": {
+            "type": "string",
+            "description": "取消时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "cancelType": {
+            "$ref": "#/components/schemas/OutboundCancelTypeEnum"
+          },
+          "trackStatus": {
+            "$ref": "#/components/schemas/TrackStatusEnum"
+          },
+          "trackLastTime": {
+            "type": "string",
+            "description": "派送状态最后更新时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "pickBatchId": {
+            "type": "integer",
+            "description": "波次拣货ID",
+            "format": "int64",
+            "nullable": true
+          },
+          "packProductQuantity": {
+            "type": "integer",
+            "description": "打包产品数量",
+            "format": "int32"
+          },
+          "packBoxQuantity": {
+            "type": "integer",
+            "description": "打包箱数",
+            "format": "int32"
+          },
+          "packPalletQuantity": {
+            "type": "integer",
+            "description": "打包托盘数量",
+            "format": "int32"
+          },
+          "productItem": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiOutboundProductOutput"
+            },
+            "description": "产品信息",
+            "nullable": true
+          },
+          "trackingNoItem": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiOutboundTrackingNoOutput"
+            },
+            "description": "运单子单号",
+            "nullable": true
+          }
+        }
+      },
+      "ApiOutboundProductOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "出库产品Id",
+            "format": "int64"
+          },
+          "outboundId": {
+            "type": "integer",
+            "description": "出库单号",
+            "format": "int64"
+          },
+          "boxNo": {
+            "type": "integer",
+            "description": "自定义箱号",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "integer",
+            "description": "产品Id",
+            "format": "int64"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/ProductUnitEnum2"
+          },
+          "sku": {
+            "type": "string",
+            "description": "SKU",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "产品数量",
+            "format": "int32"
+          },
+          "packOutQuantity": {
+            "type": "integer",
+            "description": "产品已经装箱数量",
+            "format": "int32"
+          },
+          "measureWeight": {
+            "type": "number",
+            "description": "重量",
+            "format": "double"
+          },
+          "measureHeight": {
+            "type": "number",
+            "description": "高度",
+            "format": "double"
+          },
+          "measureLength": {
+            "type": "number",
+            "description": "长度",
+            "format": "double"
+          },
+          "measureWidth": {
+            "type": "number",
+            "description": "宽度",
+            "format": "double"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "ApiOutboundTrackingNoOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Id",
+            "format": "int64"
+          },
+          "outboundId": {
+            "type": "integer",
+            "description": "出库单号",
+            "format": "int64"
+          },
+          "boxNo": {
+            "type": "string",
+            "description": "自定义箱号",
+            "nullable": true
+          },
+          "trackingNo": {
+            "type": "string",
+            "description": "运单号",
+            "nullable": true
+          },
+          "labelUrl": {
+            "type": "string",
+            "description": "运单保存位置",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64",
+            "nullable": true
+          }
+        }
+      },
+      "ApiProductOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "产品Id",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64",
+            "nullable": true
+          },
+          "sku": {
+            "type": "string",
+            "description": "产品编码",
+            "nullable": true
+          },
+          "unit": {
+            "$ref": "#/components/schemas/ProductUnitEnum"
+          },
+          "barcode": {
+            "type": "string",
+            "description": "条码",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "品名",
+            "nullable": true
+          },
+          "brand": {
+            "type": "string",
+            "description": "品牌",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "description": "分类",
+            "nullable": true
+          },
+          "customsChinaName": {
+            "type": "string",
+            "description": "申报中文名",
+            "nullable": true
+          },
+          "customsEnglishName": {
+            "type": "string",
+            "description": "申报英文名",
+            "nullable": true
+          },
+          "customsValue": {
+            "type": "number",
+            "description": "申报价值",
+            "format": "double",
+            "nullable": true
+          },
+          "currency": {
+            "type": "string",
+            "description": "币种",
+            "nullable": true
+          },
+          "customsWeight": {
+            "type": "number",
+            "description": "申报重量",
+            "format": "double",
+            "nullable": true
+          },
+          "customsOrigin": {
+            "type": "string",
+            "description": "原产地",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/NullableOfStatusEnum"
+          },
+          "customsHsCode": {
+            "type": "string",
+            "description": "海关编码",
+            "nullable": true
+          },
+          "customsMaterial": {
+            "type": "string",
+            "description": "材质",
+            "nullable": true
+          },
+          "customsSusage": {
+            "type": "string",
+            "description": "用途",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "description": "图片",
+            "nullable": true
+          },
+          "weightUnit": {
+            "$ref": "#/components/schemas/WeightUnitEnum"
+          },
+          "dimensionsUnit": {
+            "$ref": "#/components/schemas/DimensionsUnitEnum"
+          },
+          "measureStatus": {
+            "type": "boolean",
+            "description": "质检尺寸测量状态"
+          },
+          "measureLength": {
+            "type": "number",
+            "description": "质检长度",
+            "format": "double"
+          },
+          "measureWidth": {
+            "type": "number",
+            "description": "质检宽度",
+            "format": "double"
+          },
+          "measureHeight": {
+            "type": "number",
+            "description": "质检高度",
+            "format": "double"
+          },
+          "measureWeight": {
+            "type": "number",
+            "description": "质检重量",
+            "format": "double"
+          },
+          "length": {
+            "type": "number",
+            "description": "长度",
+            "format": "double"
+          },
+          "width": {
+            "type": "number",
+            "description": "宽度",
+            "format": "double"
+          },
+          "height": {
+            "type": "number",
+            "description": "高度",
+            "format": "double"
+          },
+          "weight": {
+            "type": "number",
+            "description": "重量",
+            "format": "double"
+          },
+          "sellPrice": {
+            "type": "number",
+            "description": "销售价",
+            "format": "double",
+            "nullable": true
+          },
+          "costPrice": {
+            "type": "number",
+            "description": "成本价",
+            "format": "double",
+            "nullable": true
+          },
+          "pickingName": {
+            "type": "string",
+            "description": "拣货信息",
+            "nullable": true
+          },
+          "isBattery": {
+            "type": "boolean",
+            "description": "带电池"
+          },
+          "isTort": {
+            "type": "boolean",
+            "description": "是否侵权"
+          },
+          "isMagnet": {
+            "type": "boolean",
+            "description": "是否带磁"
+          },
+          "isLiquid": {
+            "type": "boolean",
+            "description": "是否液体"
+          },
+          "isPowder": {
+            "type": "boolean",
+            "description": "是否粉末"
+          },
+          "isPaste": {
+            "type": "boolean",
+            "description": "是否膏状"
+          },
+          "isInboundSerialNumber": {
+            "type": "boolean",
+            "description": "入库序列号管控"
+          },
+          "isOutboundSerialNumber": {
+            "type": "boolean",
+            "description": "出库序列号管控"
+          },
+          "usableStockQuantity": {
+            "type": "integer",
+            "description": "可用库存数量",
+            "format": "int32"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "description": "库存数量",
+            "format": "int32"
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "ApiRefreshTokenInput": {
+        "required": [
+          "accessToken",
+          "refreshToken"
+        ],
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "令牌Token",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "description": "刷新Token",
+            "nullable": true
+          }
+        }
+      },
+      "ApiRefreshTokenOutput": {
+        "required": [
+          "accessToken"
+        ],
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "令牌Token",
+            "nullable": true
+          },
+          "expires_in": {
+            "type": "integer",
+            "description": "过期时间",
+            "format": "int32"
+          }
+        },
+        "nullable": true
+      },
+      "ApishoppingServicePageList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "物流服务编号",
+            "format": "int64"
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "description": "代码",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "名称",
+            "nullable": true
+          }
+        }
+      },
+      "ApiStockPageList": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "库存编号",
+            "format": "int64"
+          },
+          "sku": {
+            "type": "string",
+            "description": "SKU",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64",
+            "nullable": true
+          },
+          "productId": {
+            "type": "integer",
+            "description": "产品ID",
+            "format": "int64"
+          },
+          "usableStockQuantity": {
+            "type": "integer",
+            "description": "可用库存数量",
+            "format": "int32"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "description": "库存数量",
+            "format": "int32"
+          },
+          "checkQuantity": {
+            "type": "integer",
+            "description": "盘点数量",
+            "format": "int32"
+          },
+          "stockLocationNo": {
+            "type": "string",
+            "description": "货位编码",
+            "nullable": true
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/StocksTypeEnum2"
+          },
+          "stocksIncreaseType": {
+            "$ref": "#/components/schemas/StocksIncreaseTypeEnum"
+          },
+          "number": {
+            "type": "integer",
+            "description": "相关单号",
+            "format": "int64",
+            "nullable": true
+          },
+          "inBoundTime": {
+            "type": "string",
+            "description": "上架时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createTime": {
+            "type": "string",
+            "description": "创建时间",
+            "format": "date-time",
+            "nullable": true
+          },
+          "explain": {
+            "type": "string",
+            "description": "说明",
+            "nullable": true
+          }
+        },
+        "nullable": true
+      },
+      "ApiTotalStockPageList": {
+        "type": "object",
+        "properties": {
+          "sku": {
+            "type": "string",
+            "description": "SKU",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "description": "客户Id",
+            "format": "int64",
+            "nullable": true
+          },
+          "productId": {
+            "type": "integer",
+            "description": "产品ID",
+            "format": "int64"
+          },
+          "type": {
+            "$ref": "#/components/schemas/StocksTypeEnum2"
+          },
+          "usableStockQuantity": {
+            "type": "integer",
+            "description": "合格品可用库存数量",
+            "format": "int32"
+          },
+          "stockQuantity": {
+            "type": "integer",
+            "description": "合格品库存数量",
+            "format": "int32"
+          },
+          "imperfectionsQuantity": {
+            "type": "integer",
+            "description": "残次品库存数量",
+            "format": "int32"
+          },
+          "outboundUseQuantity": {
+            "type": "integer",
+            "description": "出库占用库存数量",
+            "format": "int32"
+          },
+          "totalStockQuantity": {
+            "type": "integer",
+            "description": "总库存数量",
+            "format": "int32"
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          }
+        },
+        "nullable": true
+      },
+      "ApiTrackingLabel": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "运单文件(PDF Base64格式)",
+            "nullable": true
+          }
+        },
+        "description": "运单文件",
+        "nullable": true
+      },
+      "ApiTrackingOutput": {
+        "type": "object",
+        "properties": {
+          "outboundId": {
+            "type": "integer",
+            "description": "出库单号",
+            "format": "int64"
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          },
+          "trackingNo": {
+            "type": "string",
+            "description": "运单号",
+            "nullable": true
+          },
+          "shippingCode": {
+            "type": "string",
+            "description": "物流服务代码",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/TrackingStatusEnum"
+          },
+          "trackMessageList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApiTrackMessageOutput"
+            },
+            "description": "派送详细信息",
+            "nullable": true
+          }
+        },
+        "nullable": true
+      },
+      "ApiTrackMessageOutput": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "派送信息",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "description": "位置",
+            "nullable": true
+          },
+          "time": {
+            "type": "string",
+            "description": "首条信息时间",
+            "format": "date-time"
+          },
+          "messageSourceType": {
+            "$ref": "#/components/schemas/TrackMessageSourceTypeEnum"
+          }
+        }
+      },
+      "ApiUserLoginOutput": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "description": "令牌Token",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "description": "刷新Token",
+            "nullable": true
+          },
+          "expires_in": {
+            "type": "integer",
+            "description": "过期时间",
+            "format": "int32"
+          }
+        },
+        "nullable": true
+      },
+      "ApiwarehouseUserPageList": {
+        "type": "object",
+        "properties": {
+          "warehouseName": {
+            "type": "string",
+            "description": "仓库名称",
+            "nullable": true
+          },
+          "warehouseCode": {
+            "type": "string",
+            "description": "仓储代码",
+            "nullable": true
+          }
+        }
+      },
+      "ArrivalShippingTypeEnum": {
+        "enum": [
+          "Express",
+          "Air",
+          "Sea",
+          "Other"
+        ],
+        "description": "到仓运输方式"
+      },
+      "BillItemBusinessTypeEnum": {
+        "type": "integer",
+        "description": "业务类型"
+      },
+      "BillItemCreateTypeEnum": {
+        "type": "integer",
+        "description": "创建方式"
+      },
+      "BillItemStatusEnum": {
+        "type": "integer",
+        "description": "状态"
+      },
+      "BillItemTypeEnum": {
+        "type": "integer",
+        "description": "账单类型"
+      },
+      "DimensionsUnitEnum": {
+        "enum": [
+          "cm",
+          "inch"
+        ],
+        "description": "尺寸单位"
+      },
+      "InboundArrivalTyepEnum": {
+        "enum": [
+          "Box",
+          "Pallet",
+          "FT20",
+          "HCFT20",
+          "FT40",
+          "HCFT40",
+          "FT45"
+        ],
+        "description": "到仓类型"
+      },
+      "InboundReceiveTypeEnum": {
+        "enum": [
+          "Box",
+          "Pallet",
+          "Container20GP",
+          "Container40GP",
+          "Container40HQ",
+          "Container45HQ"
+        ],
+        "description": "类型"
+      },
+      "InboundStatusEnum": {
+        "enum": [
+          "Draft",
+          "InTransit",
+          "Received",
+          "Checked",
+          "Shelved",
+          "Completed",
+          "Cancel"
+        ],
+        "description": "状态"
+      },
+      "NullableOfStatusEnum": {
+        "enum": [
+          "Enable",
+          "Disable",
+          null
+        ],
+        "description": "状态",
+        "nullable": true
+      },
+      "OutboundCancelTypeEnum": {
+        "enum": [
+          "Normal",
+          "User",
+          "Abnormal"
+        ],
+        "description": "取消类型"
+      },
+      "OutboundFinancialStatusEnum": {
+        "enum": [
+          "Unpaid",
+          "CompletePayment"
+        ],
+        "description": "财务状态"
+      },
+      "OutboundPickTypeEnum": {
+        "enum": [
+          "Default",
+          "PickBatch"
+        ],
+        "description": "拣货类型"
+      },
+      "OutboundStatusEnum": {
+        "enum": [
+          "Draft",
+          "Submit",
+          "Confirm",
+          "Picking",
+          "Picked",
+          "Packed",
+          "Shipmented",
+          "Complete",
+          "Cancel"
+        ],
+        "description": "出库单状态"
+      },
+      "ProductUnitEnum": {
+        "enum": [
+          "Piece",
+          "Box",
+          "Pallet"
+        ],
+        "description": "规格单位"
+      },
+      "ProductUnitEnum2": {
+        "enum": [
+          "Piece",
+          "Box",
+          "Pallet"
+        ],
+        "description": "规格"
+      },
+      "ProductUnitEnum3": {
+        "enum": [
+          "Piece",
+          "Box",
+          "Pallet"
+        ]
+      },
+      "StatusEnum": {
+        "enum": [
+          "Enable",
+          "Disable"
+        ]
+      },
+      "StocksIncreaseTypeEnum": {
+        "enum": [
+          "Inbound",
+          "Adjust",
+          "Relocation",
+          "ReturnInbound"
+        ],
+        "description": "上架类型"
+      },
+      "StocksTypeEnum": {
+        "enum": [
+          "Qualified",
+          "Imperfections"
+        ],
+        "description": "上架类型"
+      },
+      "StocksTypeEnum2": {
+        "enum": [
+          "Qualified",
+          "Imperfections"
+        ],
+        "description": "库存类型"
+      },
+      "StocksTypeEnum3": {
+        "enum": [
+          "Qualified",
+          "Imperfections"
+        ]
+      },
+      "StopStatusEnum": {
+        "enum": [
+          "Normal",
+          "Apply",
+          "Success",
+          "Fail"
+        ],
+        "description": "截单状态"
+      },
+      "TrackingStatusEnum": {
+        "enum": [
+          "Pending",
+          "InPend",
+          "Notfound",
+          "InfoReceived",
+          "InTransit",
+          "Expired",
+          "OutForDelivered",
+          "Undelivered",
+          "Exception",
+          "Delivered"
+        ],
+        "description": "状态"
+      },
+      "TrackMessageSourceTypeEnum": {
+        "enum": [
+          "API",
+          "Manual"
+        ],
+        "description": "来源类型"
+      },
+      "TrackStatusEnum": {
+        "enum": [
+          "Null",
+          "InTransit",
+          "Delivered"
+        ],
+        "description": "派送状态"
+      },
+      "WeightUnitEnum": {
+        "enum": [
+          "kg",
+          "lb"
+        ],
+        "description": "重量单位"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Json Web Token"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "授权 Auth"
+    },
+    {
+      "name": "产品 Product"
+    },
+    {
+      "name": "入库 Inbound"
+    },
+    {
+      "name": "出库 Outbound"
+    },
+    {
+      "name": "库存 Stock"
+    },
+    {
+      "name": "基础 Base"
+    },
+    {
+      "name": "财务 Finance"
+    }
+  ]
+}
