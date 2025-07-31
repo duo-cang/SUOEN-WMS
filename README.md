@@ -19,7 +19,7 @@
 
 #### 接入准备
     
-    秘钥申请： 登录客户端账号，获取appId和accessToken，如果没有需要注册
+    秘钥申请： 登录客户端账号，获取appId和accessToken，如果没有需要注册 https://www.suoen.com
     授权机制： 使用appId和AppSecret兑换accessToken accessToken失效后，通过refreshToken重新获取
     请求规范： 数据格式：请求参数以 JSON 格式置于请求体中 
     请求头参数： --header 'Authorization: Bearer YOUR_SECRET_TOKEN'
